@@ -703,24 +703,24 @@ public class AwesomeNotificationsPlugin extends BroadcastReceiver implements Flu
                 throw new PushNotificationException("Firebase is not enabled for this project");
             }
 
-            FirebaseInstanceId
-                    .getInstance()
-                    .getInstanceId()
-                    .addOnCompleteListener(
-                            new OnCompleteListener<InstanceIdResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<InstanceIdResult> task) {
+            // FirebaseInstanceId
+            //         .getInstance()
+            //         .getInstanceId()
+            //         .addOnCompleteListener(
+            //                 new OnCompleteListener<InstanceIdResult>() {
+            //                     @Override
+            //                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
 
-                                    if (!task.isSuccessful()) {
-                                        Exception e = task.getException();
-                                        Log.w(TAG, "getFirebaseToken could not fetch instanceID: ", e);
-                                        result.error("getFirebaseToken could not fetch instanceID", e.getMessage(), e);
-                                        return;
-                                    }
+            //                         if (!task.isSuccessful()) {
+            //                             Exception e = task.getException();
+            //                             Log.w(TAG, "getFirebaseToken could not fetch instanceID: ", e);
+            //                             result.error("getFirebaseToken could not fetch instanceID", e.getMessage(), e);
+            //                             return;
+            //                         }
 
-                                    result.success(task.getResult().getToken());
-                                }
-                            });
+            //                         result.success(task.getResult().getToken());
+            //                     }
+            //                 });
 
         } catch (Exception e){
             result.error("Firebase service not available (check if you have google-services.json file)", e.getMessage(), e);
